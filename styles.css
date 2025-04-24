@@ -462,6 +462,56 @@ body {
   resize: vertical;
 }
 
+/* Blog Section */
+.blog {
+  padding: 8rem 0;
+  min-height: 100vh;
+}
+
+.blog h2 {
+  font-size: 3.5rem;
+  color: var(--text-light);
+  margin-bottom: 4rem;
+  text-align: left;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.blog h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  height: 3px;
+  background: var(--accent-orange);
+}
+
+.blog-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.blog-content p {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  line-height: 2;
+  margin-bottom: 2.5rem;
+  text-align: justify;
+  letter-spacing: 0.3px;
+}
+
+.blog-content p:first-of-type::first-letter {
+  font-size: 4rem;
+  color: var(--accent-orange);
+  float: left;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  line-height: 1;
+  font-weight: 700;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .hero-content {
@@ -545,6 +595,29 @@ body {
       min-height: 160px;
       padding: 1.5rem;
   }
+
+  .blog {
+    padding: 6rem 0;
+  }
+
+  .blog h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .blog-content {
+    padding: 0 1.5rem;
+  }
+
+  .blog-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .blog-content p:first-of-type::first-letter {
+    font-size: 3rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -559,5 +632,14 @@ body {
   .image-container {
       width: 250px;
       height: 250px;
+  }
+
+  .blog-content {
+    padding: 0 1rem;
+  }
+  
+  .blog-content p {
+    font-size: 1rem;
+    line-height: 1.7;
   }
 }
