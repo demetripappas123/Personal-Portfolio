@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Code to Coin - Demetri Pappas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-content">
+                <div class="logo">Demetri Pappas</div>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#work">Work</a>
+                    <a href="#contact">Contact</a>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-toggle">Technical Portfolio</a>
+                        <div class="dropdown-content">
+                            <a href="professional-docs.html">Resume & Example CV</a>
+                            <a href="trading-bot.html">Code to Coin</a>
+                            <a href="instruction-set.html">Getting Started With Git</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Document Content -->
+        <section class="document">
+            <div class="section-content">
+                <h2>From Code to Coin: Implementing Natural Language Processing in Automated Bots for Memecoin Trading</h2>
+                
+                <div class="document-meta">
+                    <div class="meta-item">
+                        <h3>Authors</h3>
+                        <p>Harrison Roberts, Demetri Pappas</p>
+                    </div>
+                    <div class="meta-item">
+                        <h3>Department</h3>
+                        <p>Computer Science and Engineering</p>
+                    </div>
+                    <div class="meta-item">
+                        <h3>Mentor</h3>
+                        <p>Yancy V. Paredes, Ph.D.</p>
+                    </div>
+                </div>
+
+                <div class="document-section">
+                    <h3>Project Objective</h3>
+                    <p>The aim of this project is to develop a working prototype of an automated trading bot which implements existing Natural Language Processing (NLP) models to analyze market sentiment from social media APIs. Social Media is the key breeding ground of trends which lead to the development of memecoin related projects, and being able to accurately analyze market sentiment while avoiding the high degree of pitfalls and risks in the memecoin market could produce a cutting-edge contribution to the fields of financial technology and blockchain.</p>
+                </div>
+
+                <div class="document-section">
+                    <h3>Project Background and Significance</h3>
+                    <p>The cryptocurrency market is notable for its volatility and sensitivity to public sentiment– specifically when it comes to memecoins. While people generally relegate memes to the realm of frivolous amusement, the evolution of different memetic trends reflects a highly complex and interesting syncretism of socio-technical processes; the way groups and individuals interact creatively and figuratively on globalized platforms with algorithmic feeds culminate in very interesting –and very relevant– insights.</p>
+                    
+                    <p>Natural Language Processing, or NLP for short, is a branch of artificial intelligence that is focused on training AI models to interpret human language and sentiment more effectively. Technologies already exist called "social media listeners," including Brand24 and Hootsuite to name a few, which utilize NLP to analyze social media sentiment from platform APIs and track spikes in activity. However, similar technologies have not been explored to their fullest extent when it comes to trading algorithms (Dakaleb et al., 2024). Considering that the cultural and financial impact of memetic trends is so immense that the number of meme-related crypto projects is up 440% in the past year, it is highly opportunistic to use NLP to accurately analyze the platforms where these trends originate.</p>
+                    
+                    <p>However, while social media is a fertile ground for legitimate projects, it is also a minefield for misinformation and "pump and dump" schemes, artificially inflating prices before orchestrating mass sell-offs, leaving investors with significant losses (Quereshi et al., 2023). 60% of investors see memecoins as a short term investment, and over 2,000 memecoins disappear per month on average. This incredibly high turnover rate, often referred to as a "death-rate," varies across blockchains but is led by Base at 67%, and is followed by Solana at 54% (Chainplay, 2025). Intuition says that this might be a combination of rug-pulls and general volatility associated with the market trends– for any lasting trend, only a few coins may emerge on top, and that is if the trend lasts. This research will combine sentiment analysis with market analysis on memecoins on data taken from CoinGecko's API to filter out likely rug-pulls and scams from buy orders based on sentiment analysis. Thus, we effectively track sentiment using established NLP models working on filtered data from social media APIs, and mitigate risk by looking for key market factors before moving to the buy.</p>
+                </div>
+
+                <div class="document-section">
+                    <h3>Research Methods</h3>
+                    <p>The research process will follow a four-phase methodology, first collecting and cleaning the data from Twitter and Reddit APIs based on keywords, and then moving on to analyzing sentiment and increases in traffic over time. Positive sentiment and high traffic spikes could indicate a trend for coins associated with a meme, and this will prompt the bot to move to validate the coins with market analysis, which the third phase drives development towards. At this point, the bot will be observed on paper trading platforms (e.g. Binance's TestNet), before moving on to the final stage of testing and optimization.</p>
+
+                    <div class="methodology-phase">
+                        <h4>I. Social Media Data Collection</h4>
+                        <p>To identify emerging coins as of interest, we will collect data from Twitter and Reddit's APIs, as these are generally considered the main movers of retail cryptocurrency investor behavior. The APIs we will use are publicly available: X API v2, and Reddit API via PRAWN. We will need to manage and clean large volumes of data, which will require premium API features and database storage. The next step is to clean the data based on keywords, values, and hashtags associated with emerging memecoins (e.g. ETH, #Solana) to reduce the amount of data we need for NLP training and validation.</p>
+                    </div>
+
+                    <div class="methodology-phase">
+                        <h4>II. NLP and Trend Analysis</h4>
+                        <p>Filtered data will be processed with pre-trained NLP models, namely BERT (Bidirectional Encoder Representations from Transformers) and FinBERT, which are equipped to conduct detailed sentiment analysis (Dakaleb et al., 2024), (Khairat and Mohamed, 2024). When increased social media traffic is observed and sentiment analysis is positive, this is a key indicator for the bot to move onto the next phase of validating the coin before the buy order.</p>
+                    </div>
+
+                    <div class="methodology-phase">
+                        <h4>III. Market Evaluation via CoinGecko API</h4>
+                        <p>For every coin that is flagged during the BERT processing of the data, the bot will query the CoinGecko API for key market metrics which might indicate the coin is a scam or unlikely to show substantiated growth for a period of time. The main metrics analyzed will be the market cap, 24 hour trading volume, number of exchanges listed, price history, and developer and community activity.</p>
+                        <p>The market cap requirement will be set sufficiently high to avoid caps susceptible to market manipulation, the 24 hour trading volume will ensure liquidity, the number of exchanges listed must be sufficiently high, and the price history will be used in volatility assessment (Hidayatullah, 2024). Developer and community activity can be a strong sign of legitimacy as well, namely just that documentation exists publicly for it in the first place. Coins that do not meet the specifications above will be excluded from potential buy orders (Azzam et al., 2024).</p>
+                    </div>
+
+                    <div class="methodology-phase">
+                        <h4>IV. Trading Algorithm Development</h4>
+                        <p>Based on the combined sentiment scores and market analysis, the bot will begin trading on a paper trading platform, namely TestNet. This is where we will train the bot and optimize all aspects of the development process before moving on to real trades. The timeline we have established is for the Summer C semester at UCF, and is as follows:</p>
+                        
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <span class="timeline-date">May</span>
+                                <span class="timeline-desc">API integrations</span>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-date">June</span>
+                                <span class="timeline-desc">BERT, FinBert sentiment analysis training and validation</span>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-date">July</span>
+                                <span class="timeline-desc">CoinGecko API integration, market filters, begin the paper trading stage</span>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-date">August</span>
+                                <span class="timeline-desc">Backtesting, optimization, and final documentation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="document-section">
+                    <h3>Expected Outcome</h3>
+                    <p>By August 2025, we will have a fully functional prototype for our automatic trading bot. We aim to have a sufficiently large volume of trades with solid statistics. We will be looking for Sortino Ratios greater than 1.75 (preferred as opposed to Sharpe because it only penalizes downside volatility), greater than 55% win rates, and uptime and API stability; we want to make sure the server side works effectively and the bot doesn't miss any trades due to crashes or the inability to handle large data volumes, for example. Finally, backtesting results should not statistically deviate from live performance.</p>
+
+                    <div class="deliverables">
+                        <h4>Deliverables</h4>
+                        <ul>
+                            <li>A poster outlining our research and results, to be shown at UCF undergraduate research conventions and showcases</li>
+                            <li>A white paper outlining methodologies and trading metrics of the bot to be disseminated to the fintech community</li>
+                            <li>A public GitHub Repository which hosts the codebase and a demo of the prototype for educational purposes, and to potentially bridge to open-source development</li>
+                            <li>A potential submission to an undergraduate research journal in data-science, AI, or fintech, if results and feedback warrant this</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="document-section">
+                    <h3>Works Cited</h3>
+                    <div class="citations">
+                        <p>Dakalbab, Fatima, et al. "Artificial Intelligence Techniques in Financial Trading: A Systematic Literature Review." Journal of King Saud University - Computer and Information Sciences, vol. 36, no. 3, 2024.</p>
+                        <p>Khairat, Zeinab, and Hamdy Mohamed. "Algorithmic Trading and AI: A Review of Strategies and Market Impact." ResearchGate, 2024.</p>
+                        <p>Hidayatullah, Moh. "An Analytical Study on the Integration of AI in Automated Crypto Trading Systems." European Journal of Business and Management Research, vol. 9, no. 2, 2024.</p>
+                        <p>Azzam, Nour, et al. "AI-Driven Models for Crypto Trading: Addressing Market Manipulation and Sentiment Volatility." Open Journal of Business and Management, vol. 13, no. 3, 2024.</p>
+                        <p>Qureshi, Khizar, and Tauhid Zaman. "Social Media Engagement and Cryptocurrency Performance." PLOS ONE, vol. 18, no. 5, 2023.</p>
+                        <p>ChainPlay. "State of Memecoin 2024." ChainPlay, 2024.</p>
+                    </div>
+                </div>
+
+                <div class="document-section">
+                    <h3>Budget</h3>
+                    <div class="budget">
+                        <div class="budget-item">
+                            <span class="budget-category">Cloud computing credits</span>
+                            <span class="budget-amount">$600</span>
+                        </div>
+                        <div class="budget-item">
+                            <span class="budget-category">Access to premium API features</span>
+                            <span class="budget-amount">$300</span>
+                        </div>
+                        <div class="budget-item">
+                            <span class="budget-category">Data storage and logging tools</span>
+                            <span class="budget-amount">$150</span>
+                        </div>
+                        <div class="budget-item">
+                            <span class="budget-category">Software tools and subscriptions</span>
+                            <span class="budget-amount">$200</span>
+                        </div>
+                        <div class="budget-item">
+                            <span class="budget-category">Miscellaneous research expenses</span>
+                            <span class="budget-amount">$250</span>
+                        </div>
+                        <div class="budget-total">
+                            <span class="budget-category">Total Requested</span>
+                            <span class="budget-amount">$1,500.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="javascript.js"></script>
+</body>
+</html> 

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Getting Started With Git - Demetri Pappas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-content">
+                <div class="logo">Demetri Pappas</div>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#work">Work</a>
+                    <a href="#contact">Contact</a>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-toggle">Technical Portfolio</a>
+                        <div class="dropdown-content">
+                            <a href="professional-docs.html">Resume & Example CV</a>
+                            <a href="trading-bot.html">Code to Coin</a>
+                            <a href="instruction-set.html">Getting Started With Git</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Instruction Set Content -->
+        <section class="document">
+            <div class="section-content">
+                <h2>Setting Up a Project with GitHub</h2>
+
+                <div class="document-section">
+                    <h3>Introduction</h3>
+                    <p>This instruction set will take you step by step through setting up a coding project with GitHub. GitHub is a very useful tool we will dive into more detail on, which allows us to track changes to coding projects, upload our work from a local device, and collaborate with others.</p>
+
+                    <p>For this project, we will set up a project called Rock Paper Scissors, which will have an index.html file and a javascript.js file. We won't actually code the project itself, but we will create a secure link between our local device and the Git server, create the necessary directory and files on our local device, link our directory to a corresponding Git repository, and push (update) the files we created to it. This will set us up for using all of the tools Git has to offer for our project (in future instruction sets).</p>
+
+                    <div class="note-box">
+                        <h4>Operating System Requirements</h4>
+                        <p>These instructions are intended for Linux-based operating systems. The operating system (OS for short) is the software that runs your computer; when you think of using Windows versus a Mac, those are two different common operating systems.</p>
+                        <p>For Windows or Mac users, you can use Oracle VirtualBox to set up a Linux environment. We also assume that you have:</p>
+                        <ul>
+                            <li>Visual Studio Code installed</li>
+                            <li>Google Chrome installed</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="document-section">
+                    <h3>Setting Up GitHub</h3>
+                    
+                    <div class="subsection">
+                        <h4>GitHub Basics</h4>
+                        <p>GitHub is a platform for uploading and sharing your work, publicly hosting it on a server, and it has built-in version control– a system that allows you to track changes to your work, trace where errors might have occurred, and make changes on your own branches before merging them with the main project.</p>
+                        <p>Go ahead and create a new account at <a href="https://github.com/signup" class="link">github.com/signup</a> if you don't have one already.</p>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>Creating an SSH Key</h4>
+                        <p>SSH (Secure Shell) is a safe way to link files and connect data to remote sites over unsecured networks. SSH connections will encrypt any data you link and allow you to push your local file changes to your GitHub account.</p>
+
+                        <div class="instruction-step">
+                            <h5>Step 1: Access the Command Line Interface (CLI)</h5>
+                            <p>Press <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> to open your terminal.</p>
+                            <div class="code-block">
+                                <pre><code>username@Xubuntu:~$</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="instruction-step">
+                            <h5>Step 2: Generate SSH Keys</h5>
+                            <p>Run the following command to generate your SSH key pair:</p>
+                            <div class="code-block">
+                                <pre><code>ssh-keygen -t ed25519 -C "your_email@example.com"</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="instruction-step">
+                            <h5>Step 3: Start SSH Agent and Add Key</h5>
+                            <p>Run these commands to enable automatic authentication:</p>
+                            <div class="code-block">
+                                <pre><code>eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="instruction-step">
+                            <h5>Step 4: Display and Copy Public Key</h5>
+                            <p>Display your public key with:</p>
+                            <div class="code-block">
+                                <pre><code>cat ~/.ssh/id_ed25519.pub</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="instruction-step">
+                            <h5>Step 5: Add Key to GitHub</h5>
+                            <ol>
+                                <li>Click your profile icon → Settings</li>
+                                <li>Select "SSH and GPG Keys"</li>
+                                <li>Click "New SSH Key"</li>
+                                <li>Paste your public key and save</li>
+                            </ol>
+                        </div>
+
+                        <div class="instruction-step">
+                            <h5>Step 6: Test Connection</h5>
+                            <p>Verify your setup with:</p>
+                            <div class="code-block">
+                                <pre><code>ssh -T git@github.com</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="document-section">
+                    <h3>Creating the Project Files and Linking them to Git</h3>
+
+                    <div class="subsection">
+                        <h4>Creating Project Files</h4>
+                        <div class="instruction-step">
+                            <h5>Step 1: Create Project Directory</h5>
+                            <p>Create a new directory for your project:</p>
+                            <div class="code-block">
+                                <pre><code>mkdir rockPaperScissors
+cd rockPaperScissors</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="instruction-step">
+                            <h5>Step 2: Create Project Files</h5>
+                            <p>Create the necessary files for your project:</p>
+                            <div class="code-block">
+                                <pre><code>touch index.html javascript.js</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h4>Linking to GitHub Repository</h4>
+                        <div class="instruction-step">
+                            <h5>Step 1: Create GitHub Repository</h5>
+                            <p>Create a new repository on GitHub with the same name as your local directory.</p>
+                        </div>
+
+                        <div class="instruction-step">
+                            <h5>Step 2: Link Local Directory to GitHub</h5>
+                            <p>Run these commands to link your local directory to GitHub:</p>
+                            <div class="code-block">
+                                <pre><code>git init
+git remote add origin git@github.com:your-username/rockPaperScissors.git</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="instruction-step">
+                            <h5>Step 3: Push Files to GitHub</h5>
+                            <p>Add, commit, and push your files:</p>
+                            <div class="code-block">
+                                <pre><code>git add .
+git commit -m "Initial commit"
+git push -u origin main</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="javascript.js"></script>
+</body>
+</html> 
